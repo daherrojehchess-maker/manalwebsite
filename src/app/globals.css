@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1c1f23;
+  --color-ink-2: #3a3f45;
+  --color-muted: #646a71;
+  --color-line: #e4e2dd;
+  --color-line-strong: #cfccc5;
+  --color-bg: #faf9f7;
+  --color-surface: #ffffff;
+  --color-stone: #f1efea;
+  --color-stone-2: #e9e6df;
+  --color-accent: #1a56a8;
+  --color-accent-hover: #14468a;
+  --color-accent-soft: #e9f0fa;
+  --color-success: #1f7a4d;
+  --color-warning: #9a6512;
+  --color-danger: #b42318;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-ink: #128c4a;
+
+  --font-sans: var(--font-plex), system-ui, "Segoe UI", Arial, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-pop: 0 8px 24px rgb(28 31 35 / 0.08), 0 2px 6px rgb(28 31 35 / 0.04);
+  --shadow-drawer: 0 0 40px rgb(28 31 35 / 0.18);
+
+  --breakpoint-xs: 26rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  @media (min-width: 1024px) {
+    body {
+      font-size: 17px;
+    }
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  ::selection {
+    background: var(--color-accent-soft);
+  }
+  h1,
+  h2,
+  h3 {
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 1360px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 768px) {
+    .container-x {
+      padding-inline: 24px;
+    }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding-inline: 22px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--color-accent);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+  }
+  .btn-secondary {
+    border: 1.5px solid var(--color-ink);
+    color: var(--color-ink);
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background: var(--color-ink);
+    color: #fff;
+  }
+  .btn-light {
+    background: #fff;
+    color: var(--color-ink);
+  }
+  .btn-light:hover {
+    background: var(--color-stone);
+  }
+  .btn-whatsapp {
+    border: 1.5px solid var(--color-whatsapp-ink);
+    color: var(--color-whatsapp-ink);
+    background: #fff;
+  }
+  .btn-whatsapp:hover {
+    background: #effbf3;
+  }
+  .btn[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .field {
+    width: 100%;
+    min-height: 48px;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    padding: 10px 14px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
+  .label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--color-ink-2);
+  }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-md);
+  }
+
+  /* fieldset defaults to min-width: min-content, which lets floated legends
+     push inputs out of the card in RTL checkout. */
+  fieldset.card {
+    min-inline-size: 0;
+  }
+
+  .eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 0.01em;
+  }
+
+  .prose-he h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-top: 1.6em;
+    margin-bottom: 0.5em;
+  }
+  .prose-he p {
+    color: var(--color-ink-2);
+    margin-bottom: 1em;
+  }
+
+  .placeholder-note {
+    border: 1.5px dashed var(--color-line-strong);
+    background: repeating-linear-gradient(135deg, #fff, #fff 10px, var(--color-stone) 10px, var(--color-stone) 20px);
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
